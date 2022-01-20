@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('superheroes/', include('superheroes.urls')),
     path('',RedirectView.as_view(url='/superheroes/'))
+    # path('details/',RedirectView.as_view(url='/superheroes/details/'))
 ]
