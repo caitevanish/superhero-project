@@ -31,7 +31,7 @@
       </li>
     </ul>
     <a href="{% url 'superheroes:update' hero.id %}">Update this Hero</a><br />
-    <a href="">Delete this Hero</a><br />
+    <a href="{% url 'superheroes:delete' hero.id %}">Delete this Hero</a><br />
     {% endblock %}
   </body>
 </html>

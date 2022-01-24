@@ -43,14 +43,14 @@ def update(request, hero_id):
       'hero' : update_hero
   }
 
-  if request.method == "POST": #?
-    name = request.POST.get('name')
-    alter_ego = request.POST.get('alter_ego')
-    primary = request.POST.get('primary')        
-    secondary = request.POST.get('secondary')
-    catchphrase = request.POST.get('catchphrase')
+  if request.method == "POST":
+    update_hero.name = request.POST.get('name')
+    update_hero.alter_ego = request.POST.get('alter_ego')
+    update_hero.primary_ability = request.POST.get('primary')        
+    update_hero.secondary_ability = request.POST.get('secondary')
+    update_hero.catch_phrase = request.POST.get('catchphrase')
     
-    update_hero = Superhero(name=name, alter_ego=alter_ego, primary_ability=primary, secondary_ability=secondary, catch_phrase=catchphrase)
+    # update_hero = Superhero(name=name, alter_ego=alter_ego, primary_ability=primary, secondary_ability=secondary, catch_phrase=catchphrase)
     update_hero.save()
     
     return HttpResponseRedirect(reverse('superheroes:index'))
@@ -60,14 +60,14 @@ def update(request, hero_id):
     
 
 
-def delete(request, hero_id):
+def delete_hero(request, hero_id):
   single_hero = Superhero.objects.get(pk=hero_id)
-  context = {
-    'hero': single_hero
-  }
+  # context = {
+  #   'hero': single_hero
+  # }
+  # if request.method == 'POST':
+  single_hero.delete()
 
-  if request.method == 'POST':
-    pass
-
-    return HttpResponseRedirect(reverse('superheroes:index'))
-  return render(request, 'superheroes/details.html', context)
+  return HttpResponseRedirect(reverse('superheroes:index'))
+  # else:
+  #   return render(request, 'superheroes/details.html', context)
