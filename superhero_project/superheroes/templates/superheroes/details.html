@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,12 +9,29 @@
     <title>Superhero Details</title>
   </head>
   <body>
-    <h1>{{hero.name}}</h1>
+    {% block content %}
+    <a href="{% url 'superheroes:index' %}">Return to Superheroes List</a><br />
+    <h1 class="my-5">{{hero.name}}</h1>
     <ul>
-      <li>Alter Ego: {{hero.alter_ego}}</li>
-      <li>Primary Ability: {{hero.primary_ability}}</li>
-      <li>Secondary Ability: {{hero.secondary_ability}}</li>
-      <li>Catch Phrase: {{hero.catch_phrase}}</li>
+      <li>
+        <h3>Alter Ego:</h3>
+        {{hero.alter_ego}}
+      </li>
+      <li>
+        <h3>Primary Ability:</h3>
+        {{hero.primary_ability}}
+      </li>
+      <li>
+        <h3>Secondary Ability:</h3>
+        {{hero.secondary_ability}}
+      </li>
+      <li>
+        <h3>Catch Phrase:</h3>
+        {{hero.catch_phrase}}
+      </li>
     </ul>
+    <a href="{% url 'superheroes:update' hero.id %}">Update this Hero</a><br />
+    <a href="">Delete this Hero</a><br />
+    {% endblock %}
   </body>
 </html>
